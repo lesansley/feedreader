@@ -21,18 +21,25 @@ $(function() {
             expect(allFeeds.length).toBeGreaterThan(0)
         });
 
-        // Test that the RSS feeds have a url
+        // Loop through the RSS feeds and ensure they all have a url
         it('have non-empty urls', function() {
-            expect(allFeeds[0].url).toBeDefined();
-            expect(allFeeds[0].url).not.toBe('');
-            expect(allFeeds[0].url).not.toBe(null);
+
+            allFeeds.forEach(function(feed) {
+                expect(feed.url).toBeDefined();
+                expect(feed.url).not.toBe('');
+                expect(feed.url).not.toBe(null);
+            });
+
         });
 
-        // Test that the RSS feeds have a name
+        // Loop through the RSS feeds and ensure they all have a name
         it('have a name', function() {
-            expect(allFeeds[0].name).toBeDefined();
-            expect(allFeeds[0].name).not.toBe('');
-            expect(allFeeds[0].url).not.toBe(null);
+
+            allFeeds.forEach(function(feed) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name).not.toBe('');
+                expect(feed.name).not.toBe(null);
+            });
         });
     });
 
@@ -48,7 +55,6 @@ $(function() {
 
         // The class 'menu-hidden' on the body is toggled when the menu icon is clicked
         it('changes visibilty when clicked', function() {
-            elem.className = '';
 
             // Test that the menu appears on the first click
             $('.menu-icon-link').trigger('click');
@@ -96,7 +102,7 @@ $(function() {
         it('should change content when the feed is loaded', function() {
             // set the new feed equal to a variable
             var newFeed = $('.feed').html();
-            expect(newFeed).not.toBe(oldFeed);
+            expect(newFeed).not.toEqual(oldFeed);
         });
     });
 }());
