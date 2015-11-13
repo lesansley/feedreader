@@ -92,7 +92,9 @@ $(function() {
             });
         });
 
+        // Test that the current feed text is not the same as the original feed text
         it('should change content when the feed is loaded', function() {
+            // set the new feed equal to a variable
             var newFeed = $('.feed').html();
             expect(newFeed).not.toBe(oldFeed);
         });
